@@ -1,4 +1,4 @@
-import { container } from 'tsyringe';
+import { container, inject } from 'tsyringe';
 
 import ICustomersRepository from '@modules/customers/repositories/ICustomersRepository';
 import CustomersRepository from '@modules/customers/infra/typeorm/repositories/CustomersRepository';
@@ -9,4 +9,17 @@ import ProductsRepository from '@modules/products/infra/typeorm/repositories/Pro
 import IOrdersRepository from '@modules/orders/repositories/IOrdersRepository';
 import OrdersRepository from '@modules/orders/infra/typeorm/repositories/OrdersRepository';
 
-// TODO
+container.registerSingleton<ICustomersRepository>(
+  'CustomersRepository',
+  CustomersRepository,
+);
+
+container.registerSingleton<IProductsRepository>(
+  'ProductsRepository',
+  ProductsRepository,
+);
+
+container.registerSingleton<IOrdersRepository>(
+  'OrdersRepository',
+  OrdersRepository,
+);
